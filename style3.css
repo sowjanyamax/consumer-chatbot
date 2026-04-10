@@ -1,0 +1,73 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Background */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+background-image: url('https://thumbs.dreamstime.com/z/consumer-rights-protection-wheel-infographic-various-icons-127580144.jpg');
+    background-size: cover;
+    
+}
+
+/* Container */
+.container {
+    background: rgba(0, 0, 0, 0.3); /* semi-transparent */
+    backdrop-filter: blur(15px);   /* blur effect */
+    -webkit-backdrop-filter: blur(15px); /* for Safari */
+
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff7eb3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ff4f91;
+}
+
+/* Image preview */
+#preview {
+    max-width: 200px;
+    display: none;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+/* Response text */
+#response {
+    margin-top: 15px;
+    font-weight: bold;
+}

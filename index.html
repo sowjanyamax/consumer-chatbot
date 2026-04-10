@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Help Chatbot</title>
+    <link rel="stylesheet" href="stylech.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Complaint Help Chatbot 🤖</h1>
+
+    <!-- Language Selection -->
+    <select id="language">
+        <option value="en">English</option>
+        <option value="te">తెలుగు</option>
+        <option value="hi">हिंदी</option>
+    </select>
+
+    <br><br>
+
+    <!-- Text Input -->
+    <input type="text" id="userInput" placeholder="Type your issue...">
+
+    <br><br>
+
+    <!-- Image Upload -->
+    <input type="file" id="imageUpload" accept="image/*">
+
+    <br><br>
+
+    <!-- Image Preview -->
+    <img id="preview">
+
+    <br><br>
+
+    <button class="btn" onclick="getResponse()">Send</button>
+
+    <p id="response"></p>
+
+    <br>
+
+    <a href="basicrules.html" class="btn">Go Back</a>
+</div>
+
+<script>
+
+// Image Preview
+document.getElementById("imageUpload").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById("preview");
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+function getResponse() {
+    let input = document.getElementById("userInput").value.toLowerCase();
+    let lang = document.getElementById("language").value;
+    let response = "";
+
+    let canComplain = input.includes("defective") || 
+                     input.includes("refund") || 
+                     input.includes("damage") || 
+                     input.includes("fraud") ||
+                     input.includes("service");
+
+    if (canComplain) {
+
+        if (lang === "en") {
+            response = "✅ You can file a complaint. Redirecting...";
+        } 
+        else if (lang === "te") {
+            response = "✅ మీరు ఫిర్యాదు చేయవచ్చు. మిమ్మల్ని వెబ్‌సైట్‌కి తీసుకెళ్తున్నాం...";
+        } 
+        else if (lang === "hi") {
+            response = "✅ आप शिकायत दर्ज कर सकते हैं। आपको वेबसाइट पर ले जाया जा रहा है...";
+        }
+
+        document.getElementById("response").innerText = response;
+
+        setTimeout(() => {
+            window.location.href = "https://consumerhelpline.gov.in/";
+        }, 2000);
+    } 
+    
+    else {
+        if (lang === "en") {
+            response = "❌ This may not be a valid consumer complaint.";
+        } 
+        else if (lang === "te") {
+            response = "❌ ఇది సరైన వినియోగదారుల ఫిర్యాదు కాకపోవచ్చు.";
+        } 
+        else if (lang === "hi") {
+            response = "❌ यह मान्य उपभोक्ता शिकायत नहीं हो सकती।";
+        }
+
+        document.getElementById("response").innerText = response;
+    }
+}
+
+</script>
+
+</body>
+</html>
